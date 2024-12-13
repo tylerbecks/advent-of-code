@@ -1,6 +1,6 @@
 import input from './input';
 
-const OPERATORS = ['+', '*'];
+const OPERATORS = ['+', '*', '||'];
 
 const solve = () => {
   const lines = parseInput(input);
@@ -22,6 +22,9 @@ function parseInput(input: string): Array<{ result: number; inputs: Array<number
 }
 
 function evaluate(operator: string, a: number, b: number): number {
+  if (operator === '||') {
+    return Number(Number(a).toString().concat(Number(b).toString()));
+  }
   return operator === '+' ? a + b : a * b;
 }
 
